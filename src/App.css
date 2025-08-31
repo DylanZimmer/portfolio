@@ -1,38 +1,468 @@
-.App {
-  text-align: center;
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* prevents scrolling */
+  height: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background-color: #d6d6d6dc;
+  background-image: 
+    repeating-linear-gradient(45deg, rgba(0,0,0,0.08), rgba(0,0,0,0.08) 1px, transparent 1px, transparent 25px),
+    repeating-linear-gradient(-45deg,rgba(0,0,0,0.08), rgba(0,0,0,0.08) 1px, transparent 1px, transparent 25px);
+}
+
+
+
+.page {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.left {
+  flex: 1;
+  position: relative;  /* so absolute positioning inside works */
+  font-size: 2.5rem;            /* larger, adjust to taste */
+  font-weight: 300;             /* light weight */
+  padding: 40px;
+  color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* top and bottom spacing */
+  z-index: 1;  /* above the background */
+}
+
+.top-text h1 {
+  font-family: 'Allan';
+  font-size: 4rem;
+  margin: 0;
+}
+
+.top-text h2 {
+  font-family: 'League Script';
+  font-size: 2rem;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  opacity: 0.8;
+  margin-left: 1rem;
+}
+
+.bottom-buttons {
+  display: flex;
+  justify-content: center; /* center horizontally */
+  gap: 20px; /* space between buttons */
+  margin-bottom: 15%; /* spacing from bottom of container */
+}
+
+.btn {
+  padding: 10px 30px;         /* makes it wide and pill-shaped */
+  border-radius: 999px;       /* fully rounded edges */
+  border: 2px solid rgba(0,0,0,0.6); /* semi-transparent dark border */
+  background-color: rgba(0,0,0,0.3);  /* transparent dark background */
+  color: white;               /* text color */
+  font-family: 'Roboto Flex';
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-decoration: none;      /* remove underline for links */
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* hover effect */
+.btn:hover {
+  background-color: rgba(0,0,0,0.6);  /* darker on hover */
+  border-color: rgba(0,0,0,0.8);
+}
+
+
+
+.right {
+  width: 60%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;           /* optional, you can reduce or remove if needed */
+  padding: 6px;       /* optional */
+  box-sizing: border-box;
+}
+
+.split-section {
+  flex: 1 1 0;        /* evenly split available space */
+  min-height: 0;      /* crucial for child video to shrink inside */
+  display: flex;
+  position: relative;
+  cursor: pointer;
+}
+
+.video {
+  flex: 1 1 0;        /* fills split-section without overflowing */
+  min-height: 0;      /* allow flex shrinking */
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.split-section.hovered::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  pointer-events: none;
+  transition: background-color 0.3s ease;
+}
+
+.split-title-overlay {
+  position: absolute;
+  top: 40%;
+  left: 70%;
+  transform: translate(-50%, -50%);
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.split-title {
+  color: white;
+  font-family: 'Dancing Script', 'Brush Script MT', cursive; /* elegant, flowy fonts */
+  font-size: 2.5rem;            /* larger, adjust to taste */
+  font-weight: 300;             /* light weight */
+  text-align: center;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5); /* subtle shadow for contrast */
+  margin: 0;
+  pointer-events: none;
+  letter-spacing: 0.5px;        /* a bit of spacing for elegance */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.resume-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  /* align to top */
+  align-items: center;          /* keep horizontal centering */
+  opacity: 0;
+  pointer-events: none; 
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+  overflow-y: auto;             
+  padding: 2%;                  
+}
+
+
+.resume-overlay.visible {
+  opacity: 1;
+  pointer-events: auto; 
+}
+
+.resume-frame {
+  width: 80%;           /* keeps it reasonably wide */
+  height: auto;          /* preserve full image height */
+  max-width: 800px;      /* optional max width */
+  margin-bottom: 1rem;   /* spacing between pages */
+}
+
+
+.close-btn {
+  font-size: 2rem;
+  margin-left: 55%;
+  color: white;          /* visible against dark background */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10000;        /* make sure it’s above images */
+}
+
+/* -------------------------------------------------------------------------------------------------------- */
+/*Above was made on basepage below for Experience pages*/
+
+.experience-page {
+  display: flex;
+  flex-direction: column; /* top container + experience container stacked vertically */
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background-color: #111; /* optional dark background */
+  color: white;
+  box-sizing: border-box;
+}
+
+.top-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  flex-shrink: 0;
+  font-family: 'Nanum Myeongjo';
+}
+
+.top-header {
+  font-size: 2.5rem; /* larger than before */
+  font-weight: 700;
+}
+
+.back-link {
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #727070;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: #555; /* subtle hover */
+}
+
+.spacer {
+  width: 3rem; /* balances the "Back" text on the left */
+}
+
+.experience-container {
+  display: flex;
+  flex: 1; /* fill remaining height */
+  gap: 1rem; /* space between boxes */
+  padding: 2rem;
+  align-items: stretch; /* make boxes fill container height */
+}
+
+.experience-box {
+  flex: 1; /* default size */
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+.experience-box.expanded {
+  flex: 2.5; /* enlarged when active */
+  background: rgba(255, 255, 255, 0.15); /* slightly brighter to highlight */
+}
+
+.experience-box.shrunk {
+  flex: 0.8; /* shrinks when other is active */
+  opacity: 0.6;
+}
+
+.box-front {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 90%;
+  height: 90%;
+  background-color: white;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  text-align: center;
+  font-family: 'Newsreader';
 }
 
-.App-link {
-  color: #61dafb;
+.box-front .company-name {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #433737;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.box-front img {
+  width: 70%; /* takes a bigger, more balanced space */
+  height: 60%;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.box-front .role-title {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #333;
+  margin-top: 0.25rem;
+}
+
+.box-back {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* top, middle, bottom */
+  width: 90%;
+  height: 90%;
+  background-color: #333; /* semi-dark grey */
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  font-family: 'Newsreader', sans-serif;
+  color: #f5f5f5; /* main text color for contrast */
+  overflow-y: auto;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5); /* subtle shadow for readability */
+  border: 2px solid rgba(255, 255, 255, 0.2); /* soft off-white */
+  box-sizing: border-box; /* ensures padding + border fit inside width/height */
+}
+  
+.box-back .card-header {
+  display: flex;
+  flex-direction: row;       /* row layout, items on same line */
+  justify-content: flex-start; /* title left, link will be spaced manually */
+  align-items: center;       /* vertically center text */
+  margin-top: 3%;
+  margin-bottom: 1.5%;
+  gap: 1rem;                 /* space between title and link */
+}
+
+.box-back .card-header h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  color: #ffffff; 
+  text-align: left;
+  margin-left: 3%;
+}
+
+/* Wrap h2 and date in a right-side container */
+.box-back .card-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  top: -4px; /* nudges the block upward so h2 sits higher than h3 */
+  margin-left: 5%;
+}
+
+.box-back .card-header h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0;
+  color: #dddddd;
+  line-height: 1.2;
+}
+
+.box-back .card-header-date {
+  font-size: 0.9rem;
+  color: #cccccc;
+  margin-top: 2px;
+  align-self: flex-start; /* keep left aligned under h2 */
+}
+
+
+.box-back .card-header a {
+  font-size: 1rem;
+  color: #00aaff;
+  text-decoration: none;
+  margin-left: 10%;
+}
+
+.box-back .card-header a:hover {
+  text-decoration: underline;
+}
+
+
+/* Middle section: bullet points */
+.box-back .card-description {
+  flex: 1; /* fills vertical space */
+  margin: 0.5rem 0;
+  margin-top: 2%;
+  font-size: 1.1rem;
+}
+
+.box-back .card-description ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  list-style-type: disc;
+  margin-top:2%;
+}
+
+.box-back .card-description li {
+  font-weight: 400; /* regular weight for readability */
+  color: #f5f5f5;
+  margin-top:1%;
+}
+
+/* Divider styling */
+.box-back hr {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.2); /* subtle line */
+  margin: 0.5rem 0;
+}
+
+/* Bottom section: technologies */
+.box-back .card-technologies-container {  
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #dddddd; /* slightly muted for subtle emphasis */
+  margin-top:1%;
+  margin-bottom: 3%;
+  margin-left: 3%;
+}
+
+.box-back .card-technologies {
+  font-size: 1rem;
+  margin-top: 1%;
+  margin-left: 6%;
+}
+
+/* -------------------------------------------------------------------------------------------------------- */
+/* Above for experience pages below for Personal*/
+
+.personal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.personal-img-holder {
+  background: rgb(255, 241, 241);
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  width: 80%;         /* fills most of the middle horizontally */
+  max-width: 1000px;  /* prevents it from stretching too wide on large screens */
+  padding: 3rem 2rem;
+  position: relative;
+  text-align: center;
+}
+
+.personal-img-holder::before {
+  content: "";
+  position: absolute;
+  top: -80px; /* controls how far above it floats */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-image: url('../public/visuals/workspace-logo.png'); /* replace with your photo */
+  background-size: cover;
+  background-position: center;
+  border: 6px solid white;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+.personal-text {
+  margin-top: 100px; /* spacing so text clears the floating image */
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #333;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
