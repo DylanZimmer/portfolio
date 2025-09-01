@@ -2,7 +2,6 @@ import './App.css';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { Document, Page } from 'react-pdf';
 
 
 function BasePage() {
@@ -12,7 +11,6 @@ function BasePage() {
     const [personalHover, setPersonalHover] = useState(false);
     const [videosLoaded, setVideosLoaded] = useState({ workExp: false, otherExp: false, personal: false });
     const [showResume, setShowResume] = useState(false);
-    const [numPages, setNumPages] = useState(null);
 
     const handleVideoLoad = (videoType) => {
         setVideosLoaded(prev => ({ ...prev, [videoType]: true }));
