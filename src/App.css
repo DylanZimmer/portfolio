@@ -6,6 +6,7 @@ body, html {
   height: 100%;
 }
 
+/*
 .background {
   position: fixed;
   top: 0;
@@ -19,7 +20,18 @@ body, html {
     repeating-linear-gradient(45deg, rgba(0,0,0,0.08), rgba(0,0,0,0.08) 1px, transparent 1px, transparent 25px),
     repeating-linear-gradient(-45deg,rgba(0,0,0,0.08), rgba(0,0,0,0.08) 1px, transparent 1px, transparent 25px);
 }
+*/
 
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background-color:#000000
+}
 
 
 .page {
@@ -42,35 +54,40 @@ body, html {
   z-index: 1;  /* above the background */
 }
 
+.top-text {
+  color: white;
+  text-align: center;
+}
+
 .top-text h1 {
-  font-family: 'Allan';
-  font-size: 4rem;
+  font-size: 3rem;
   margin: 0;
+  font-family: 'Fira Sans Extra Condensed';
 }
 
 .top-text h2 {
-  font-family: 'League Script';
   font-size: 2rem;
   margin-top: 0.5rem;
   font-weight: 600;
   opacity: 0.8;
   margin-left: 1rem;
+  font-family: 'Inconsolata';
 }
 
 .bottom-buttons {
   display: flex;
   justify-content: center; /* center horizontally */
   gap: 20px; /* space between buttons */
-  margin-bottom: 15%; /* spacing from bottom of container */
+  margin-bottom: 20%; /* spacing from bottom of container */
 }
 
 .btn {
   padding: 10px 30px;         /* makes it wide and pill-shaped */
   border-radius: 999px;       /* fully rounded edges */
-  border: 2px solid rgba(0,0,0,0.6); /* semi-transparent dark border */
-  background-color: rgba(0,0,0,0.3);  /* transparent dark background */
+  border: 2px solid rgba(255,255,255,0.371); /* semi-transparent dark border */
+  background-color: rgba(255, 255, 255, 0.371);  /* transparent dark background */
   color: white;               /* text color */
-  font-family: 'Roboto Flex';
+  font-family: 'Fira Sans Extra Condensed';
   font-size: 1.5rem;
   font-weight: 500;
   text-decoration: none;      /* remove underline for links */
@@ -135,7 +152,7 @@ body, html {
 
 .split-title {
   color: white;
-  font-family: 'Dancing Script', 'Brush Script MT', cursive; /* elegant, flowy fonts */
+  font-family: 'Inconsolata'; /* elegant, flowy fonts */
   font-size: 2.5rem;            /* larger, adjust to taste */
   font-weight: 300;             /* light weight */
   text-align: center;

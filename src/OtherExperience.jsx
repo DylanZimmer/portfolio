@@ -32,7 +32,7 @@ function OtherExperience() {
                                 <ul>
                                     <li>Implemented NoSQL design on Firebase to allow role-based access and store patient information securely</li>
                                     <li>Led developer communication and finalized teammates’ pages to ensure a cohesive app design and a clean, consistent codebase</li>
-                                    <li>I do need a third bullet</li>
+                                    <li>Managed authentication and authorization using Firebase</li>
                                 </ul>
                             </div>
                             <hr />
@@ -57,7 +57,7 @@ function OtherExperience() {
                         <div className="box-back">
                             <div className="card-header">
                                 <h3>Workspace</h3>
-                                <a href="https://v56-tier2-team-25-chingu.vercel.app/" target="_blank" rel="noopener noreferrer">Workspace</a>
+                                <a href="https://trackedspace.netlify.app/" target="_blank" rel="noopener noreferrer">Workspace</a>
                             </div>
                             <hr />
                             <div className="card-description">

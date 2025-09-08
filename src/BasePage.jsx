@@ -40,7 +40,7 @@ function BasePage() {
         
         <div className="page">
             <div className="left">
-                <div className="top-text" style={{ marginTop:"15%", marginLeft:"6%" }}>
+                <div className="top-text" style={{ marginTop:"20%" }}>
                     <h1>Dylan Zimmer-Eads</h1>
                     <h2>Software Developer</h2>
                 </div>
