@@ -16,6 +16,42 @@ function WorkExperience() {
             </div>
             <div className="experience-container">
                 <motion.div
+                    className={`experience-box ${activeCard === 'ogi' ? 'expanded' : activeCard ? 'shrunk' : ''}`}
+                    onClick={() => setActiveCard(activeCard === 'ogi' ? null : 'ogi')}
+                >
+                    {activeCard === 'ogi' ? (
+                        <div className="box-back">
+                            <div className="card-header">
+                                <h3>OGI</h3>
+                                <div className="card-header-right">
+                                    <h2>Full-Stack Developer</h2>
+                                    <div className="card-header-date">10/2025 - Present</div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div className="card-description">
+                            Collaborated with the company founder and original developer to finalize version one of the updated app in anticipation of increased traffic. Refactored core logic to enhance scalability and simplify ongoing maintenance ahead of hard launch.
+                                <ul>
+                                    <li>Implemented a NoSQL database to enable flexible data modeling and accelerate iteration on evolving app features</li>
+                                    <li>Applied scalable design patterns and refactored core logic to improve maintainability and performance</li>
+                                    <li>Resolved critical bugs and optimized workflows ahead of the app’s hard launch</li>
+                                </ul>
+                            </div>
+                            <hr />
+                            <div className="card-technologies-container">
+                                <strong>Technologies:</strong><br /> 
+                                <div className="card-technologies">React, MongoDB, Typescript</div>
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="box-front">
+                            <div className="company-name">Orton Gillingham International</div>
+                            <img src="/visuals/ogi-logo.png" alt="OGI Logo" />
+                            <div className="role-title">Full-Stack Developer</div>
+                        </div>
+                    )}
+                </motion.div>
+                <motion.div
                     className={`experience-box ${activeCard === 'bny' ? 'expanded' : activeCard ? 'shrunk' : ''}`}
                     onClick={() => setActiveCard(activeCard === 'bny' ? null : 'bny')}
                 >
