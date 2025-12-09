@@ -458,24 +458,7 @@ body, html {
   text-align: center;
 }
 
-.personal-img-holder::before {
-  content: "";
-  position: absolute;
-  top: -80px; /* controls how far above it floats */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  background-image: url('../public/visuals/workspace-logo.png'); /* replace with your photo */
-  background-size: cover;
-  background-position: center;
-  border: 6px solid white;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-}
-
 .personal-text {
-  margin-top: 100px; /* spacing so text clears the floating image */
   font-size: 1.2rem;
   line-height: 1.8;
   color: #333;
