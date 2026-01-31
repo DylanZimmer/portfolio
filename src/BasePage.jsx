@@ -46,8 +46,13 @@ function BasePage() {
                 </div>
 
                 <div className="bottom-buttons">
-                    <a className="btn" href="https://github.com/DylanZimmer" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <div className="btn" onClick={() => setShowResume(true)}>Résumé</div>
+                    <div className="button-layer">
+                        <a className="btn" href="https://github.com/DylanZimmer" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a className="btn" href="https://public.tableau.com/app/profile/dylan.zimmer.eads/vizzes" target="_blank" rel="noopener noreferrer">Tableau</a>
+                    </div>
+                    <div className="button-layer">
+                        <div className="btn" onClick={() => setShowResume(true)}>Résumé</div>
+                    </div>
                 </div>
             </div>
 

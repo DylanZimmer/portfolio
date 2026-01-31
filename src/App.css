@@ -76,10 +76,22 @@ body, html {
 
 .bottom-buttons {
   display: flex;
-  justify-content: center; /* center horizontally */
-  gap: 20px; /* space between buttons */
-  margin-bottom: 20%; /* spacing from bottom of container */
+  flex-direction: column; /* stack layers vertically */
+  gap: 16px;              /* space between layers */
+  margin-bottom: 20%;
 }
+
+.button-layer {
+  display: flex;
+  justify-content: center; /* default for single button */
+  gap: 20px;
+}
+
+/* when there are two buttons, push them apart */
+.button-layer:has(button:nth-child(2)) {
+  justify-content: space-between;
+}
+
 
 .btn {
   padding: 10px 30px;         /* makes it wide and pill-shaped */
