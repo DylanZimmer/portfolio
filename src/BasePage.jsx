@@ -34,8 +34,8 @@ function BasePage() {
         <div className="background"></div>
         <div className={`resume-overlay ${showResume ? 'visible' : ''}`}>
             <button className="close-btn" onClick={() => setShowResume(false)}>×</button>
-            <img src="/resume_1.png" alt="Resume Page 1" className="resume-frame" />
-            <img src="/resume_2.png" alt="Resume Page 2" className="resume-frame" />
+            <img src="/resume_1.jpg" alt="Resume Page 1" className="resume-frame" />
+            <img src="/resume_2.jpg" alt="Resume Page 2" className="resume-frame" />
         </div>
         
         <div className="page">
