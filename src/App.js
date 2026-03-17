@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import BasePage from './BasePage';
 import WorkExperience from './WorkExperience';
-import OtherExperience from './OtherExperience';
+import PersonalExperience from './PersonalExperience';
 import Personal from './Personal';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <Routes>
       <Route path="/" element={ <BasePage /> } />
       <Route path="/WorkExperience" element={ <WorkExperience /> } />
-      <Route path="/OtherExperience" element={ <OtherExperience /> } />
+      <Route path="/PersonalExperience" element={ <PersonalExperience /> } />
       <Route path="/Personal" element={ <Personal /> } />
     </Routes>
   </Router>

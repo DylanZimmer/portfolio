@@ -48,9 +48,6 @@ function BasePage() {
                 <div className="bottom-buttons">
                     <div className="button-layer">
                         <a className="btn" href="https://github.com/DylanZimmer" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        <a className="btn" href="https://public.tableau.com/app/profile/dylan.zimmer.eads/vizzes" target="_blank" rel="noopener noreferrer">Tableau</a>
-                    </div>
-                    <div className="button-layer">
                         <div className="btn" onClick={() => setShowResume(true)}>Résumé</div>
                     </div>
                 </div>
@@ -89,7 +86,7 @@ function BasePage() {
                     onMouseLeave={() => setOtherExpHover(false)}
                     onTouchStart={() => handleTouchStart(setOtherExpHover)}
                     onTouchEnd={() => handleTouchEnd(setOtherExpHover)}
-                    onClick={() => navigate('./OtherExperience')}
+                    onClick={() => navigate('./PersonalExperience')}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                 >
@@ -102,7 +99,7 @@ function BasePage() {
                         Your browser does not support the video tag.
                     </video>
                     <div className="split-title-overlay">
-                        <h2 className="split-title">Other Experience</h2>
+                        <h2 className="split-title">Personal Experience</h2>
                     </div>
                 </motion.div>
                 <motion.div className={`split-section ${personalHover ? 'hovered' : ''}`}
