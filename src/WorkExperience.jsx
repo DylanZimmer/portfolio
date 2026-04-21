@@ -25,7 +25,7 @@ function WorkExperience() {
                                 <h3>OGI</h3>
                                 <div className="card-header-right">
                                     <h2>Full-Stack Developer</h2>
-                                    <div className="card-header-date">10/2025 - Present</div>
+                                    <div className="card-header-date">10/2025 - 02/2026</div>
                                 </div>
                             </div>
                             <hr />
