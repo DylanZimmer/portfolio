@@ -23,64 +23,62 @@ function PersonalExperience() {
                     {activeCard === 'swExp' ? (
                         <div className="box-back">
                             <div className="card-header">
-                                <h3>Software Engineering Projects</h3>
-                                <a href="https://github.com/DylanZimmer/software-engineering-projects/tree/main" target="_blank" rel="noopener noreferrer">Projects</a>
+                                <h3>Previous Projects</h3>
+                                <a href="https://github.com/DylanZimmer/previous_projects" target="_blank" rel="noopener noreferrer">Projects</a>
                             </div>
                             <hr />
                             <div className="card-description">
                                 <ul>
-                                    <li>Built Workspace, an AI-powered research workspace using Gemini that generates structured objects, stores notes, and supports specialized model instances for domain-specific tasks</li>
-                                    <li>Developed Surgery Status in a Chingu collaboration, a hospital dashboard with role-based access allowing guests, surgeons, and admins to manage patient status data</li>
-                                    <li>Created Data Exploration, a tool for programmatic dataset inspection and pattern discovery through interactive queries and analysis workflows</li>
-                                    <li>Designed a Tableau data visualization dashboard to explore trends in structured datasets, highlighting statistical patterns through interactive visualizations</li>
-                                    <li>Implemented Firebase-backed NoSQL schemas, authentication, and modular React components across projects to support secure and scalable applications</li>
+                                    <li>Developed a primitive AI-powered research workspace called TrackedSpace using Gemini, with structured data objects, notes, and specialized model instances</li>
+                                    <li>Developed Surgery Status in a Chingu collaboration, a hospital dashboard with role-based access for managing patient status data</li>
+                                    <li>Created an interactive Tableau dashboard for exploring trends and patterns in reported UFO sightings</li>
+                                    <li>Developed React-based interfaces and integrated third-party services such as Gemini, Firebase, and Tableau across personal software projects</li>
                                 </ul>
                             </div>
                             <hr />
                             <div className="card-technologies-container">
                                 <strong>Technologies:</strong><br /> 
-                                <div className="card-technologies">React, Javascript, Firebase, Tailwind, Gemini, Tableau</div>
+                                <div className="card-technologies">React, JavaScript, Firebase, Gemini, Tableau</div>
                             </div>
                         </div>
                     ) : (
                         <div className="box-front">
-                            <div className="company-name">Software Engineering Projects</div>
-                            <img src="/visuals/swExp.jpg" alt="Software Engineering Experience" />
+                            <div className="company-name">Previous Projects</div>
+                            <img src="/visuals/swExp.jpg" alt="Previous Experience" />
                             <div className="role-title">Developer</div>
                         </div>
                     )}
                 </motion.div>
                 <motion.div
-                    className={`experience-box ${activeCard === 'workspace' ? 'expanded' : activeCard ? 'shrunk' : ''}`}
-                    onClick={() => setActiveCard(activeCard === 'workspace' ? null : 'workspace')}
+                    className={`experience-box ${activeCard === 'knotresearch' ? 'expanded' : activeCard ? 'shrunk' : ''}`}
+                    onClick={() => setActiveCard(activeCard === 'knotresearch' ? null : 'knotresearch')}
                 >
-                    {activeCard === 'workspace' ? (
+                    {activeCard === 'knotresearch' ? (
                         <div className="box-back">
                             <div className="card-header">
-                                <h3>Computational Math Research</h3>
-                                <a href="https://github.com/DylanZimmer/math-research" target="_blank" rel="noopener noreferrer">Projects</a>
+                                <h3>KnotResearch</h3>
+                                <a href="https://knotresearch.netlify.app/" target="_blank" rel="noopener noreferrer">KnotResearch</a>
                             </div>
                             <hr />
                             <div className="card-description">
                                 <ul>
-                                    <li>Built computational pipelines to explore large combinatorial structures and unknown Ramsey numbers, generating and analyzing massive graph datasets efficiently</li>
-                                    <li>Developed a modular knot invariant pipeline integrating databases with automated invariant computations using SageMath</li>
-                                    <li>Designed SQLite-based data storage and management systems for graphs and knot invariants to enable reproducible experiments and structured querying</li>
-                                    <li>Automated workflow for generating, analyzing, and storing results, reducing manual overhead and allowing scalable computational experimentation</li>
-                                    <li>Emphasized clean code architecture, modular functions, and reproducibility, bridging theoretical mathematics with computational tooling</li>
+                                    <li>Building KnotResearch, a full-stack research application using React and TypeScript, Spring Boot, SageMath, and PostgreSQL that allows mathematical researchers to create and analyze datasets generated through sets of knot transformations called "experiments"</li>
+                                    <li>Managed PostgreSQL infrastructure through Supabase, deployed the React frontend to Netlify and the Spring Boot backend to Render, and containerized SageMath with Docker for use by the backend</li>
+                                    <li>Developed Spring Boot REST APIs to manage knot data, diagram transformations, experiments, and invariant calculations, integrating PostgreSQL persistence with SageMath-based mathematical computations</li>
+                                    <li>Designed and debugged algorithms for mathematically correct knot representations, accounting for edge cases and invalid user inputs</li>
                                 </ul>
                             </div>
                             <hr />
                             <div className="card-technologies-container">
                                 <strong>Technologies:</strong><br /> 
-                                <div className="card-technologies">Python, SQLite, SageMath</div>
+                                <div className="card-technologies">React, TypeScript, Spring Boot, PostgreSQL, SageMath, Docker, Supabase</div>
                             </div>
                         </div>
                     ) : (
                         <div className="box-front">
-                            <div className="company-name">Computational Math Research</div>
-                            <img src="/visuals/math_research.png" alt="Math Research" />
-                            <div className="role-title">Researcher</div>
+                            <div className="company-name">KnotResearch</div>
+                            <img src="/visuals/knot_research.png" alt="KnotResearch" />
+                            <div className="role-title">Developer</div>
                         </div>
                     )}
                 </motion.div>

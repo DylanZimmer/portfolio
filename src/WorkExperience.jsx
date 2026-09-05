@@ -30,17 +30,18 @@ function WorkExperience() {
                             </div>
                             <hr />
                             <div className="card-description">
-                            Collaborated with the company founder and original developer to finalize version one of the updated app in anticipation of increased traffic. Refactored core logic to enhance scalability and simplify ongoing maintenance ahead of hard launch.
                                 <ul>
-                                    <li>Implemented a NoSQL database to enable flexible data modeling and accelerate iteration on evolving app features</li>
-                                    <li>Applied scalable design patterns and refactored core logic to improve maintainability and performance</li>
-                                    <li>Resolved critical bugs and optimized workflows ahead of the app’s hard launch</li>
+                                    <li>Developed a React/JavaScript application using Firebase to manage class registrations and registration history for teachers learning the Orton-Gillingham methodology</li>
+                                    <li>Collaborated with the Product Owner to clarify ambiguous requirements, define application workflows, and translate them into implementable software features</li>
+                                    <li>Designed Firestore data structures to support registration and historical workflows, adapting the data model as application requirements evolved</li>
+                                    <li>Implemented automated tests to verify application behavior and detect regressions across releases</li>
+                                    <li>Performed integration testing and QA across application workflows, identifying edge cases and tracing unexpected or incorrect behavior to its root cause</li>
                                 </ul>
                             </div>
                             <hr />
                             <div className="card-technologies-container">
                                 <strong>Technologies:</strong><br /> 
-                                <div className="card-technologies">React, MongoDB, Typescript</div>
+                                <div className="card-technologies">React, JavaScript, Firebase, Firestore</div>
                             </div>
                         </div>
                     ) : (
@@ -66,18 +67,18 @@ function WorkExperience() {
                             </div>
                             <hr />
                             <div className="card-description">
-                            Maintained and expanded legacy code while creating new applications for the Wealth Management team. Worked in an Agile Scrum environment to deliver timely, high-quality solutions that supported critical client-facing systems.
                                 <ul>
-                                    <li>Built ETL processes to automate data flow</li>
-                                    <li>Collaborated on experimental hedge overlay tool that leveraged historical investment data to strengthen portfolio recommendations</li>
-                                    <li>Integrated OAuth-based security and Maven dependency management to sustain reliability of RESTful APIs</li>
-                                    <li>Developed new landing pages within existing applications, extending functionality and improving usability for client-facing teams</li>
+                                    <li>Advanced from intern to full-time developer, developing and maintaining applications used by 75+ client-facing employees within the Wealth Management department</li>
+                                    <li>Developed and maintained applications with Java/Spring Boot backend services and RESTful APIs, alongside Angular/TypeScript frontends, using Maven for build management and OAuth for access control</li>
+                                    <li>Diagnosed and resolved production issues by analyzing Splunk logs and tracing application behavior across frontend and backend systems, identifying root causes and implementing fixes</li>
+                                    <li>Collaborated with business stakeholders and other developers to translate requirements into maintainable, production-ready features within an Agile environment</li>
+                                    <li>Took ownership of feature development from requirements through implementation, testing, deployment, and production support</li>
                                 </ul>
                             </div>
                             <hr />
                             <div className="card-technologies-container">
                                 <strong>Technologies:</strong><br /> 
-                                <div className="card-technologies">ColdFusion, Angular, Spring Boot, TypeScript, SQL, Pentaho (PDI), Java</div>
+                                <div className="card-technologies">Java, Spring Boot, Angular, TypeScript, SQL, Pentaho (PDI), ColdFusion</div>
                             </div>
                         </div>
                     ) : (
@@ -103,11 +104,12 @@ function WorkExperience() {
                             </div>
                             <hr />
                             <div className="card-description">
-                            Contributed to the multi-institutional Autism Genome Project, the world’s largest study identifying genes associated with autism risk. Assisted with data analysis, reporting, and visualization, while supporting staff in database navigation and SQL usage to ensure accurate interpretation of research data.
                                 <ul>
-                                    <li>Created R scripts to streamline identification of correlating phenotypes by running Fisher's two-tailed exact tests on phenotypic datasets</li>
-                                    <li>Developed SQL queries to analyze collected data and summarize trends</li>
-                                    <li>Contributed to R Shiny application to leverage REDCap for visualizing RNA sequencing data and organizing large datasets</li>
+                                    <li>Queried and analyzed large research datasets using SQL, ensuring accurate extraction and reporting of key data</li>
+                                    <li>Maintained and validated research datasets supporting a large-scale genetics research initiative</li>
+                                    <li>Developed R scripts to analyze phenotypic data using Fisher's two-tailed exact tests, supporting accurate statistical processing of research datasets</li>
+                                    <li>Investigated research datasets for inconsistencies and trends, improving data quality and usability for research teams</li>
+                                    <li>Contributed to an R Shiny application using REDCap to organize and visualize RNA sequencing data, improving data accessibility and consistency</li>
                                 </ul>
                             </div>
                             <hr />
