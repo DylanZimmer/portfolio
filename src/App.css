@@ -2,8 +2,21 @@
 body, html {
   margin: 0;
   padding: 0;
-  overflow: hidden; /* prevents scrolling */
-  height: 100%;
+  min-height: 100%;
+  background: #111;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+button, a {
+  touch-action: manipulation;
+}
+
+:focus-visible {
+  outline: 3px solid #00aaff;
+  outline-offset: 3px;
 }
 
 /*
@@ -36,13 +49,16 @@ body, html {
 
 .page {
   display: flex;
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  min-height: 100svh;
+  width: 100%;
   position: relative;
+  overflow-x: clip;
 }
 
 .left {
   flex: 1;
+  min-width: 0;
   position: relative;  /* so absolute positioning inside works */
   font-size: 2.5rem;            /* larger, adjust to taste */
   font-weight: 300;             /* light weight */
@@ -55,6 +71,7 @@ body, html {
 }
 
 .top-text {
+  margin-top: 20%;
   color: white;
   text-align: center;
 }
@@ -118,6 +135,8 @@ body, html {
 .right {
   width: 60%;
   height: 100vh;
+  height: 100svh;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 3px;           /* optional, you can reduce or remove if needed */
@@ -126,6 +145,9 @@ body, html {
 }
 
 .split-section {
+  background: #252525;
+  color: white;
+  text-decoration: none;
   flex: 1 1 0;        /* evenly split available space */
   min-height: 0;      /* crucial for child video to shrink inside */
   display: flex;
@@ -175,11 +197,16 @@ body, html {
 }
 
 .resume-overlay {
+  margin: 0;
+  border: 0;
+  max-width: none;
+  max-height: none;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
+  height: 100dvh;
   background: rgba(0,0,0,0.8);
   display: flex;
   flex-direction: column;
@@ -190,6 +217,7 @@ body, html {
   transition: opacity 0.3s ease;
   z-index: 9999;
   overflow-y: auto;             
+  overscroll-behavior: contain;
   padding: 2%;                  
 }
 
@@ -199,7 +227,12 @@ body, html {
   pointer-events: auto; 
 }
 
+.resume-overlay:not([open]) {
+  display: none;
+}
+
 .resume-frame {
+  flex-shrink: 0;
   width: 80%;           /* keeps it reasonably wide */
   height: auto;          /* preserve full image height */
   max-width: 800px;      /* optional max width */
@@ -209,9 +242,13 @@ body, html {
 
 .close-btn {
   font-size: 2rem;
-  margin-left: 55%;
+  align-self: flex-end;
+  position: sticky;
+  top: 0;
+  min-width: 44px;
+  min-height: 44px;
   color: white;          /* visible against dark background */
-  background: transparent;
+  background: #111;
   border: none;
   cursor: pointer;
   z-index: 10000;        /* make sure it’s above images */
@@ -223,8 +260,9 @@ body, html {
 .experience-page {
   display: flex;
   flex-direction: column; /* top container + experience container stacked vertically */
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  min-height: 100svh;
+  width: 100%;
   position: relative;
   background-color: #111; /* optional dark background */
   color: white;
@@ -246,10 +284,18 @@ body, html {
 }
 
 .back-link {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px;
+  background: transparent;
+  border: 0;
+  font-family: inherit;
   cursor: pointer;
   font-size: 1.25rem;
   font-weight: 500;
-  color: #727070;
+  color: #b3b3b3;
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -271,6 +317,7 @@ body, html {
 }
 
 .experience-box {
+  min-width: 0;
   flex: 1; /* default size */
   background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
@@ -299,7 +346,7 @@ body, html {
   align-items: center;
   justify-content: center;
   width: 90%;
-  height: 90%;
+  min-height: 90%;
   background-color: white;
   border-radius: 12px;
   padding: 1rem;
@@ -317,7 +364,8 @@ body, html {
 
 .box-front img {
   width: 70%; /* takes a bigger, more balanced space */
-  height: 60%;
+  height: 240px;
+  max-width: 100%;
   object-fit: contain;
   margin-bottom: 0.5rem;
 }
@@ -334,20 +382,21 @@ body, html {
   flex-direction: column;
   justify-content: space-between; /* top, middle, bottom */
   width: 90%;
-  height: 90%;
+  min-height: 90%;
   background-color: #333; /* semi-dark grey */
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 6px 16px rgba(0,0,0,0.2);
   font-family: 'Newsreader', sans-serif;
   color: #f5f5f5; /* main text color for contrast */
-  overflow: hidden;
+  overflow-wrap: anywhere;
   text-shadow: 0 1px 2px rgba(0,0,0,0.5); /* subtle shadow for readability */
   border: 2px solid rgba(255, 255, 255, 0.2); /* soft off-white */
   box-sizing: border-box; /* ensures padding + border fit inside width/height */
 }
   
 .box-back .card-header {
+  flex-wrap: wrap;
   display: flex;
   flex-direction: row;       /* row layout, items on same line */
   justify-content: flex-start; /* title left, link will be spaced manually */
@@ -455,7 +504,8 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  flex: 1;
+  padding: 2rem;
   width: 100%;
 }
 
@@ -477,4 +527,173 @@ body, html {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media (max-width: 1024px) {
+  .page {
+    flex-direction: column;
+  }
+
+  .left {
+    flex: none;
+    padding: 2rem 1rem;
+    gap: 1.5rem;
+  }
+
+  .top-text {
+    margin-top: 0;
+  }
+
+  .top-text h1 {
+    font-size: clamp(2rem, 7vw, 3rem);
+  }
+
+  .top-text h2 {
+    font-size: clamp(1.25rem, 5vw, 2rem);
+    margin: 0.5rem 0 0;
+  }
+
+  .bottom-buttons {
+    margin-bottom: 0;
+  }
+
+  .button-layer {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .btn {
+    min-height: 44px;
+    font-size: 1.25rem;
+    padding: 10px 24px;
+  }
+
+  .right {
+    width: 100%;
+    height: auto;
+    padding: 0 12px 12px;
+    gap: 12px;
+  }
+
+  .split-section {
+    flex: none;
+    height: clamp(180px, 28vw, 280px);
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .split-title-overlay {
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .split-title {
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    text-shadow: 0 2px 6px #000, 0 0 16px #000;
+  }
+
+  .top-container {
+    padding: 1rem;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .top-header {
+    flex: 1;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    text-align: center;
+  }
+
+  .spacer {
+    display: none;
+  }
+
+  .experience-container {
+    flex-direction: column;
+    padding: 0 1rem 1rem;
+  }
+
+  .experience-box,
+  .experience-box.expanded,
+  .experience-box.shrunk {
+    flex: none;
+    width: 100%;
+    padding: 12px;
+    opacity: 1;
+  }
+
+  .box-front,
+  .box-back {
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    padding: 1.25rem;
+  }
+
+  .box-front .company-name {
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    overflow-wrap: anywhere;
+  }
+
+  .box-front img {
+    height: 160px;
+    margin: 1rem 0;
+  }
+
+  .box-front .role-title {
+    font-size: 1.25rem;
+  }
+
+  .box-back .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .box-back .card-header h3,
+  .box-back .card-header-right,
+  .box-back .card-header a,
+  .box-back .card-technologies-container,
+  .box-back .card-technologies {
+    margin-left: 0;
+    top: auto;
+  }
+
+  .box-back .card-description {
+    line-height: 1.5;
+  }
+
+  .box-back .card-description li + li {
+    margin-top: 0.75rem;
+  }
+
+  .box-back .card-header a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .resume-overlay {
+    padding: 12px;
+  }
+
+  .resume-frame {
+    width: 100%;
+  }
+
+  .personal-container {
+    padding: 1rem;
+  }
+
+  .personal-img-holder {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .personal-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
 }

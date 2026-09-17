@@ -10,7 +10,7 @@ function WorkExperience() {
     return (
         <div className="experience-page">
             <div className="top-container">
-                <div className="back-link" onClick={() => navigate("../")}>Back</div>
+                <button className="back-link" onClick={() => navigate("../")}>Back</button>
                 <div className="top-header">Work Experience</div>
                 <div className="spacer"></div>
             </div>

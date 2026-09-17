@@ -1,16 +1,31 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
+
+const MotionLink = motion.create(Link);
 
 function BasePage() {
-    const navigate = useNavigate();
     const [workExpHover, setWorkExpHover] = useState(false);
     const [otherExpHover, setOtherExpHover] = useState(false);
     const [personalHover, setPersonalHover] = useState(false);
     const [videosLoaded, setVideosLoaded] = useState({ workExp: false, otherExp: false, personal: false });
     const [showResume, setShowResume] = useState(false);
+
+    const resumeDialog = useRef(null);
+
+    useEffect(() => {
+        const dialog = resumeDialog.current;
+        if (!showResume) return;
+        dialog.showModal();
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        return () => {
+            dialog.close();
+            document.body.style.overflow = previousOverflow;
+        };
+    }, [showResume]);
 
     const handleVideoLoad = (videoType) => {
         setVideosLoaded(prev => ({ ...prev, [videoType]: true }));
@@ -32,15 +47,15 @@ function BasePage() {
     return (
     <div>
         <div className="background"></div>
-        <div className={`resume-overlay ${showResume ? 'visible' : ''}`}>
-            <button className="close-btn" onClick={() => setShowResume(false)}>×</button>
+        <dialog ref={resumeDialog} aria-label="Résumé" onCancel={() => setShowResume(false)} className={`resume-overlay ${showResume ? 'visible' : ''}`}>
+            <button aria-label="Close résumé" className="close-btn" onClick={() => setShowResume(false)}>×</button>
             <img src="/resume_1.jpg" alt="Resume Page 1" className="resume-frame" />
             <img src="/resume_2.jpg" alt="Resume Page 2" className="resume-frame" />
-        </div>
+        </dialog>
         
         <div className="page">
             <div className="left">
-                <div className="top-text" style={{ marginTop:"20%" }}>
+                <div className="top-text">
                     <h1>Dylan Zimmer-Eads</h1>
                     <h2>Software Developer</h2>
                 </div>
@@ -48,13 +63,13 @@ function BasePage() {
                 <div className="bottom-buttons">
                     <div className="button-layer">
                         <a className="btn" href="https://github.com/DylanZimmer" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        <div className="btn" onClick={() => setShowResume(true)}>Résumé</div>
+                        <button className="btn" onClick={() => setShowResume(true)}>Résumé</button>
                     </div>
                 </div>
             </div>
 
             <div className="right">
-                <motion.div className={`split-section ${workExpHover ? 'hovered' : ''}`}
+                <MotionLink className={`split-section ${workExpHover ? 'hovered' : ''}`}
                     initial={{ x: 100, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
@@ -62,7 +77,7 @@ function BasePage() {
                     onMouseLeave={() => setWorkExpHover(false)}
                     onTouchStart={() => handleTouchStart(setWorkExpHover)}
                     onTouchEnd={() => handleTouchEnd(setWorkExpHover)}
-                    onClick={() => navigate('./WorkExperience')}
+                    to="/WorkExperience"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                 >
@@ -77,8 +92,8 @@ function BasePage() {
                     <div className="split-title-overlay">
                         <h2 className="split-title">Work Experience</h2>
                     </div>
-                </motion.div>
-                <motion.div className={`split-section ${otherExpHover ? 'hovered' : ''}`}
+                </MotionLink>
+                <MotionLink className={`split-section ${otherExpHover ? 'hovered' : ''}`}
                     initial={{ x: 100, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
@@ -86,7 +101,7 @@ function BasePage() {
                     onMouseLeave={() => setOtherExpHover(false)}
                     onTouchStart={() => handleTouchStart(setOtherExpHover)}
                     onTouchEnd={() => handleTouchEnd(setOtherExpHover)}
-                    onClick={() => navigate('./PersonalExperience')}
+                    to="/PersonalExperience"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                 >
@@ -99,10 +114,10 @@ function BasePage() {
                         Your browser does not support the video tag.
                     </video>
                     <div className="split-title-overlay">
-                        <h2 className="split-title">Personal Experience</h2>
+                        <h2 className="split-title">Publically Accessible Code</h2>
                     </div>
-                </motion.div>
-                <motion.div className={`split-section ${personalHover ? 'hovered' : ''}`}
+                </MotionLink>
+                <MotionLink className={`split-section ${personalHover ? 'hovered' : ''}`}
                     initial={{ x: 100, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
@@ -110,7 +125,7 @@ function BasePage() {
                     onMouseLeave={() => setPersonalHover(false)}
                     onTouchStart={() => handleTouchStart(setPersonalHover)}
                     onTouchEnd={() => handleTouchEnd(setPersonalHover)}
-                    onClick={() => navigate('./Personal')}
+                    to="/Personal"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                 >
@@ -125,7 +140,7 @@ function BasePage() {
                     <div className="split-title-overlay">
                         <h2 className="split-title">Personal</h2>
                     </div> 
-                </motion.div>
+                </MotionLink>
             </div>
         </div>
     </div>

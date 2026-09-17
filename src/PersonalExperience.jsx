@@ -11,41 +11,46 @@ function PersonalExperience() {
     return (
         <div className="experience-page">
             <div className="top-container">
-                <div classNamex="back-link" onClick={() => navigate("../")}>Back</div>
+                <button className="back-link" onClick={() => navigate("../")}>Back</button>
                 <div className="top-header">Personal Experience</div>
                 <div className="spacer"></div>
             </div>
             <div className="experience-container">
                 <motion.div
-                    className={`experience-box ${activeCard === 'swExp' ? 'expanded' : activeCard ? 'shrunk' : ''}`}
-                    onClick={() => setActiveCard(activeCard === 'swExp' ? null : 'swExp')}
+                    className={`experience-box ${activeCard === 'ogi' ? 'expanded' : activeCard ? 'shrunk' : ''}`}
+                    onClick={() => setActiveCard(activeCard === 'ogi' ? null : 'ogi')}
                 >
-                    {activeCard === 'swExp' ? (
+                    {activeCard === 'ogi' ? (
                         <div className="box-back">
                             <div className="card-header">
-                                <h3>Previous Projects</h3>
-                                <a href="https://github.com/DylanZimmer/previous_projects" target="_blank" rel="noopener noreferrer">Projects</a>
+                                <h3>OGI</h3>
+                                <div className="card-header-right">
+                                    <h2>Full-Stack Developer</h2>
+                                    <div className="card-header-date">10/2025 - 02/2026</div>
+                                </div>
+                                <a href="https://www.ortongillinghaminternational.org/" target="_blank" rel="noopener noreferrer">OGI</a>
                             </div>
                             <hr />
                             <div className="card-description">
                                 <ul>
-                                    <li>Developed a primitive AI-powered research workspace called TrackedSpace using Gemini, with structured data objects, notes, and specialized model instances</li>
-                                    <li>Developed Surgery Status in a Chingu collaboration, a hospital dashboard with role-based access for managing patient status data</li>
-                                    <li>Created an interactive Tableau dashboard for exploring trends and patterns in reported UFO sightings</li>
-                                    <li>Developed React-based interfaces and integrated third-party services such as Gemini, Firebase, and Tableau across personal software projects</li>
+                                    <li>Developed a React/JavaScript application using Firebase to manage class registrations and registration history for teachers learning the Orton-Gillingham methodology</li>
+                                    <li>Collaborated with the Product Owner to clarify ambiguous requirements, define application workflows, and translate them into implementable software features</li>
+                                    <li>Designed Firestore data structures to support registration and historical workflows, adapting the data model as application requirements evolved</li>
+                                    <li>Implemented automated tests to verify application behavior and detect regressions across releases</li>
+                                    <li>Performed integration testing and QA across application workflows, identifying edge cases and tracing unexpected or incorrect behavior to its root cause</li>
                                 </ul>
                             </div>
                             <hr />
                             <div className="card-technologies-container">
                                 <strong>Technologies:</strong><br /> 
-                                <div className="card-technologies">React, JavaScript, Firebase, Gemini, Tableau</div>
+                                <div className="card-technologies">React, JavaScript, Firebase, Firestore</div>
                             </div>
                         </div>
                     ) : (
                         <div className="box-front">
-                            <div className="company-name">Previous Projects</div>
-                            <img src="/visuals/swExp.jpg" alt="Previous Experience" />
-                            <div className="role-title">Developer</div>
+                            <div className="company-name">Orton Gillingham International</div>
+                            <img src="/visuals/ogi-logo.png" alt="OGI Logo" />
+                            <div className="role-title">Full-Stack Developer</div>
                         </div>
                     )}
                 </motion.div>
